@@ -15,6 +15,10 @@
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
     <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
@@ -30,7 +34,7 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                        sans: ['Poppins', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
                     }
                 }
             }
@@ -250,7 +254,7 @@
 
         <!-- Footer -->
         <footer class="py-10 text-center border-t border-gray-200 dark:border-gray-800 text-gray-500">
-            <p>&copy; {{ new Date().getFullYear() }} {{ profile.name }}. Built with VueJS & Tailwind CSS.</p>
+            <p>&copy; {{ new Date().getFullYear() }} {{ profile.name }}. <br/> Built with VueJS & Tailwind CSS.</p>
         </footer>
 
     </div>
