@@ -4,7 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Aldrin Caballero | Full-Stack Developer</title>
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="title" content="Aldrin Caballero | Full-Stack Developer">
+    <meta name="description"
+        content="Portfolio of Aldrin Caballero, a Full-Stack Web Developer specializing in Laravel, Vue.js, and modern web solutions.">
+    <meta name="keywords" content="Aldrin Caballero, Full-Stack Developer, Laravel, Vue.js, PHP, Philippines Developer">
+    <link rel="canonical" href="https://aldrin-portfolio-2026.netlify.app/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aldrin Caballero | Full-Stack Developer">
+    <meta name="twitter:description" content="Full-Stack Developer specializing in Laravel and Vue.js.">
+    <meta name="twitter:image" content="https://aldrin-portfolio-2026.netlify.app/android-chrome-512x512.png">
+
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aldrin Caballero Portfolio">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta property="og:url" content="https://aldrin-portfolio-2026.netlify.app/">
+    <meta property="og:title" content="Aldrin Caballero | Full-Stack Developer">
+    <meta property="og:description" content="Building exceptional digital experiences with Laravel and Vue.js.">
+    <meta property="og:image" content="https://aldrin-portfolio-2026.netlify.app/android-chrome-512x512.png">
+
+    <meta name="theme-color" content="#42b883">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
 
     <!-- Vue 3 CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -27,6 +58,32 @@
     <!-- Tailwind Configuration -->
     <script src="./assets/js/tailwind-config.min.js"></script>
     <link rel="stylesheet" href="./assets/css/styles.min.css">
+
+
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aldrin Caballero",
+  "url": "https://aldrin-portfolio-2026.netlify.app/",
+  "jobTitle": "Full-Stack Developer",
+  "description": "Full-Stack Web Developer specializing in Laravel, Vue.js, and modern web solutions.",
+  "knowsAbout": [
+    "Laravel",
+    "Vue.js",
+    "PHP",
+    "JavaScript",
+    "REST APIs",
+    "MySQL"
+  ],
+  "sameAs": [
+    "https://github.com/aldrin112602",
+    "https://www.linkedin.com/in/aldrin02/"
+  ]
+}
+</script>
+
 
 </head>
 
@@ -359,8 +416,16 @@
 
     </div>
 
-  <script src="./assets/js/vue-app.min.js"></script>  
-
+    <script src="./assets/js/vue-app.min.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('PWA Ready!'))
+                    .catch(err => console.log('PWA Failed', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
