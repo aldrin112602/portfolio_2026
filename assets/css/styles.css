@@ -1,0 +1,71 @@
+.glass-nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.dark .glass-nav {
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
+.typing-cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.code-window {
+    font-family: 'Fira Code', monospace;
+}
+
+pre code.hljs {
+    padding: 1.5em;
+    border-radius: 0.5rem;
+}
+
+.game-cell {
+    transition: all 0.2s ease;
+}
+
+.game-cell:hover {
+    transform: scale(1.05);
+}
+
+/* Custom Scrollbar Styling */
+.code-window::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.code-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.code-window::-webkit-scrollbar-thumb {
+    background-color: #42b883;
+    /* Vue Green */
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.code-window::-webkit-scrollbar-thumb:hover {
+    background-color: #33a06f;
+    /* Darker Vue Green on hover */
+}
+
+/* Firefox Support */
+.code-window {
+    scrollbar-width: thin;
+    scrollbar-color: #42b883 transparent;
+}
