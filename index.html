@@ -269,51 +269,62 @@
                         </div>
                     </div>
 
-                    <!-- Coding Challenge Game -->
+                    <!-- Quiz Game -->
                     <div
                         class="bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 p-8">
                         <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-gamepad text-vue"></i>
-                            Code Challenge Game
+                            <i class="fas fa-question-circle text-vue"></i>
+                            Who is Aldrin Caballero?
                         </h4>
                         <p class="text-gray-600 dark:text-gray-400 mb-6">
-                            Test your pattern matching skills! Click the cells to match the target pattern.
+                            Test how well you know Aldrin's skills, projects, and experience!
                         </p>
 
-                        <div class="mb-4">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="font-semibold">Target Pattern:</span>
-                                <span class="text-sm text-gray-500">Moves: {{ gameState.moves }}</span>
-                            </div>
-                            <div class="grid grid-cols-4 gap-2 mb-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                                <div v-for="(cell, index) in gameState.target" :key="'target-' + index"
-                                    :class="['h-12 rounded-lg', cell ? 'bg-vue' : 'bg-gray-300 dark:bg-gray-600']">
-                                </div>
-                            </div>
+                        <!-- Progress -->
+                        <div class="flex justify-between text-sm text-gray-500 mb-1">
+                            <span>Question {{ quiz.current + 1 }} of {{ quiz.questions.length }}</span>
+                            <span>Score: {{ quiz.score }}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mb-6">
+                            <div class="bg-vue h-1.5 rounded-full transition-all duration-300"
+                                :style="{ width: ((quiz.current + 1) / quiz.questions.length * 100) + '%' }"></div>
                         </div>
 
-                        <div class="mb-4">
-                            <span class="font-semibold block mb-2">Your Pattern:</span>
-                            <div class="grid grid-cols-4 gap-2 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                                <div v-for="(cell, index) in gameState.current" :key="'current-' + index"
-                                    @click="toggleCell(index)" :class="['h-12 rounded-lg cursor-pointer game-cell', 
-                                    cell ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600',
-                                    gameState.won && 'opacity-50']">
-                                </div>
-                            </div>
+                        <!-- Result Screen -->
+                        <div v-if="quiz.done" class="text-center py-6">
+                            <div class="text-6xl font-bold text-vue mb-1">{{ quiz.score }}</div>
+                            <div class="text-gray-500 mb-4">out of {{ quiz.questions.length }}</div>
+                            <p class="text-lg font-medium mb-6">{{ quizResultMessage }}</p>
+                            <button @click="resetQuiz"
+                                class="px-6 py-3 bg-vue text-white rounded-lg font-semibold hover:bg-vue/90 transition-colors">
+                                <i class="fas fa-redo mr-2"></i>Play Again
+                            </button>
                         </div>
 
-                        <div v-if="gameState.won"
-                            class="bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg p-4 mb-4">
-                            <p class="text-green-700 dark:text-green-300 font-bold text-center">
-                                🎉 Perfect! Completed in {{ gameState.moves }} moves!
+                        <!-- Question Screen -->
+                        <div v-else>
+                            <p class="text-lg font-semibold mb-5 leading-snug">{{ quiz.questions[quiz.current].q }}</p>
+                            <div class="grid grid-cols-1 gap-3 mb-4">
+                                <button v-for="(opt, i) in quiz.questions[quiz.current].options" :key="i"
+                                    @click="answerQuiz(i)" :disabled="quiz.answered" :class="[
+                                'text-left px-4 py-3 rounded-lg border text-sm font-medium transition-all',
+                                quiz.answered && i === quiz.questions[quiz.current].answer
+                                    ? 'bg-green-100 border-green-500 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                                    : quiz.answered && i === quiz.selectedOption
+                                    ? 'bg-red-100 border-red-400 text-red-800 dark:bg-red-900/30 dark:text-red-300'
+                                    : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-vue hover:bg-vue/5'
+                                ]">
+                                    {{ opt }}
+                                </button>
+                            </div>
+                            <p v-if="quiz.answered" class="text-sm text-gray-500 dark:text-gray-400 italic mb-4">
+                                {{ quiz.questions[quiz.current].fact }}
                             </p>
+                            <button v-if="quiz.answered" @click="nextQuizQuestion"
+                                class="w-full px-6 py-3 bg-vue text-white rounded-lg font-semibold hover:bg-vue/90 transition-colors">
+                                {{ quiz.current + 1 < quiz.questions.length ? 'Next Question →' : 'See Results' }}
+                                    </button>
                         </div>
-
-                        <button @click="resetGame"
-                            class="w-full px-6 py-3 bg-vue text-white rounded-lg font-semibold hover:bg-vue/90 transition-colors">
-                            <i class="fas fa-redo mr-2"></i>New Challenge
-                        </button>
                     </div>
                 </div>
 
@@ -417,6 +428,7 @@
     </div>
 
     <script src="./assets/js/vue-app.min.js"></script>
+    <script src="./assets/js/aldrin-chatbot.min.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

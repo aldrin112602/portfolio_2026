@@ -149,13 +149,6 @@ createApp({
       currentCodeLanguage: "php",
       currentCode: "",
 
-      gameState: {
-        target: [],
-        current: [],
-        moves: 0,
-        won: false,
-      },
-
       apiDemo: {
         quote: "",
         author: "",
@@ -241,6 +234,26 @@ createApp({
       contact: {
         email: "caballeroaldrin02@gmail.com",
       },
+
+      quiz: {
+        current: 0,
+        score: 0,
+        answered: false,
+        selectedOption: null,
+        done: false,
+        questions: [
+          { q: "What is Aldrin's primary job title?", options: ["Front-End Developer", "Full-Stack Web Developer", "Mobile App Designer", "DevOps Engineer"], answer: 1, fact: "Aldrin specializes in both back-end architecture and front-end interactivity." },
+          { q: "Which PHP framework is Aldrin's main back-end specialty?", options: ["Symfony", "CodeIgniter", "Laravel", "Django"], answer: 2, fact: "Laravel is at the core of most of Aldrin's production projects." },
+          { q: "Which company is Aldrin currently employed at?", options: ["SupSoft Tech", "OrangeApps, Inc.", "Accenture", "Self-Employed only"], answer: 1, fact: "Aldrin joined OrangeApps, Inc. as a Junior Software Engineer in July 2025." },
+          { q: "What technology powers face recognition in WebInn?", options: ["OpenCV", "Face-api.js", "AWS Rekognition", "Azure Face"], answer: 1, fact: "WebInn uses Face-api.js backed by TensorFlow.js for attendance." },
+          { q: "What did Aldrin build for Tingloy?", options: ["GPS tracker", "Ferry reservation platform", "Chat app", "Billing dashboard"], answer: 1, fact: "Handles ticket booking, group reservations, and passenger tracking." },
+          { q: "How many years of experience does Aldrin have?", options: ["1+", "2+", "4+", "10+"], answer: 2, fact: "Aldrin has 4+ years across freelance and professional roles." },
+          { q: "What was Aldrin's first internship role?", options: ["Laravel Dev", "React Dev", "Flutter Developer", "PHP Dev"], answer: 2, fact: "Aldrin interned as a Flutter Developer at SupSoft Tech." },
+          { q: "Which project is a personal recipe mobile app?", options: ["WebInn", "PIMS", "CookPal", "Swiftlink"], answer: 2, fact: "CookPal is built with Ionic + React, powered by a Laravel API." },
+          { q: "What stack powers the Mail API?", options: ["Laravel + MySQL", "Node.js + Express", "Django + Redis", "PHP + Apache"], answer: 1, fact: "The Mail API is a lightweight Node.js/Express REST API on Render." },
+          { q: "Which CSS framework does Aldrin frequently use?", options: ["Bulma", "Foundation", "Tailwind CSS", "Material UI"], answer: 2, fact: "Tailwind CSS appears across most of Aldrin's recent projects." },
+        ].sort(() => Math.random() - 0.5),
+      },
     };
   },
   computed: {
@@ -251,6 +264,31 @@ createApp({
     },
   },
   methods: {
+    answerQuiz(index) {
+      if (this.quiz.answered) return;
+      this.quiz.answered = true;
+      this.quiz.selectedOption = index;
+      if (index === this.quiz.questions[this.quiz.current].answer) {
+        this.quiz.score++;
+      }
+    },
+    nextQuizQuestion() {
+      if (this.quiz.current + 1 >= this.quiz.questions.length) {
+        this.quiz.done = true;
+      } else {
+        this.quiz.current++;
+        this.quiz.answered = false;
+        this.quiz.selectedOption = null;
+      }
+    },
+    resetQuiz() {
+      this.quiz.current = 0;
+      this.quiz.score = 0;
+      this.quiz.answered = false;
+      this.quiz.selectedOption = null;
+      this.quiz.done = false;
+      this.quiz.questions.sort(() => Math.random() - 0.5);
+    },
     copyCode() {
       navigator.clipboard.writeText(this.currentCode).then(() => {
         const originalFile = this.currentCodeFile;
@@ -311,48 +349,6 @@ createApp({
       this.currentCode = snippet.code;
     },
 
-    generatePattern() {
-      // Creates a flat 16-element array of booleans
-      const pattern = Array(16).fill(false);
-      // Determine how many cells to light up (between 4 and 8)
-      const numActive = Math.floor(Math.random() * 5) + 4;
-      let count = 0;
-
-      while (count < numActive) {
-        const index = Math.floor(Math.random() * 16);
-        if (!pattern[index]) {
-          pattern[index] = true;
-          count++;
-        }
-      }
-      return pattern;
-    },
-
-    resetGame() {
-      // Generate a new target pattern
-      this.gameState.target = this.generatePattern();
-      // Reset user progress to all false
-      this.gameState.current = Array(16).fill(false);
-      this.gameState.moves = 0;
-      this.gameState.won = false;
-    },
-
-    toggleCell(index) {
-      if (this.gameState.won) return;
-
-      // Toggle the boolean value at the specific index
-      this.gameState.current[index] = !this.gameState.current[index];
-      this.gameState.moves++;
-
-      // Check for win condition by comparing every element
-      const isMatch = this.gameState.current.every(
-        (val, i) => val === this.gameState.target[i],
-      );
-
-      if (isMatch) {
-        this.gameState.won = true;
-      }
-    },
     async fetchQuote() {
       this.apiDemo.loading = true;
 
@@ -419,6 +415,6 @@ createApp({
 
     this.typeText();
     this.currentCode = this.codeSnippets[0].code;
-    this.resetGame();
+    this.fetchQuote();
   },
 }).mount("#app");

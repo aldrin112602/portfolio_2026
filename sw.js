@@ -12,6 +12,7 @@ const ASSETS_TO_CACHE = [
   '/assets/css/tailwind-config.min.css',
   '/assets/css/styles.min.css',
   '/assets/js/vue.app.min.js',
+  '/assets/js/aldrin-chatbot.min.js',
 
 
   // External CDNs (Required for the site to function offline)
