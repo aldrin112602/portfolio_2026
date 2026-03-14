@@ -111,7 +111,7 @@
 
   const SUGGESTIONS = [
     "What's your tech stack?",
-    "Tell me about WebInn",
+    "Tell me about yourself or your journey",
     "Tell me about your OmeTV clone",
     "Available for freelance?",
     "Your strongest skill?",
