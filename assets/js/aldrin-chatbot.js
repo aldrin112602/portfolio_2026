@@ -1,11 +1,7 @@
-/*!
- * Aldrin AI Chatbot v2 — Tailwind CSS native
- * API key is secured via Netlify Function — never exposed in the browser.
- */
-
 (function () {
-  const PROXY_URL = "/.netlify/functions/chat";
-  const MODEL     = "claude-haiku-4-5-20251001";
+  const PROXY_URL    = "/.netlify/functions/chat";
+  const MODEL        = "claude-haiku-4-5-20251001";
+  const CHAT_SECRET  = "@MkJJfZmJWI+sk]M";
 
   const SYSTEM_PROMPT = `You are Aldrin Caballero — a passionate Full-Stack Web Developer from the Philippines. You are speaking directly to visitors of your personal portfolio website. Speak in first person, naturally and conversationally, as if the visitor just walked up and started chatting with you.
 
@@ -91,7 +87,6 @@ TONE
     .dark .ac-code { background:rgba(255,255,255,0.1); }
   `;
   document.head.appendChild(style);
-
 
   const notifEl = document.createElement("div");
   notifEl.id = "ac-notif";
@@ -218,9 +213,9 @@ TONE
     </div>
   `;
   document.body.appendChild(winEl);
+
   const state = { open: false, loading: false, history: [], firstOpen: true };
   const $ = (id) => document.getElementById(id);
-
   function esc(t) {
     return t
       .replace(/&/g,"&amp;").replace(/</g,"&lt;")
@@ -305,7 +300,6 @@ TONE
       el.appendChild(btn);
     });
   }
-
   async function callClaude(userMsg) {
     state.history.push({ role: "user", content: userMsg });
     const recentHistory = state.history.slice(-6);
@@ -313,7 +307,8 @@ TONE
     const res = await fetch(PROXY_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type":  "application/json",
+        "x-chat-token":  CHAT_SECRET,
       },
       body: JSON.stringify({
         model: MODEL,
