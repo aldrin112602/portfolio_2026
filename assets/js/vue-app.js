@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       darkMode: false,
+      mobileMenuOpen: false,
       profile: {
         name: "Aldrin Caballero",
         role: "Full-Stack Web Developer",
@@ -48,22 +49,9 @@ createApp({
           ],
         },
         {
-          role: "Flutter Developer Intern",
-          company: "SupSoft Tech",
-          duration: "Internship",
-          description:
-            "Assisted in building mobile application features using Flutter. Implemented UI components, handled state management, and followed team coding standards.",
-          tech: [
-            { name: "Flutter", icon: "fas fa-mobile-alt" },
-            { name: "Git", icon: "fab fa-git-alt" },
-            { name: "Github", icon: "fab fa-github-alt" },
-            { name: "Figma", icon: "fab fa-figma" },
-          ],
-        },
-        {
           role: "Freelance Full-Stack Developer",
           company: "Self-Employed",
-          duration: "2022 - Present",
+          duration: "2022 - 2025",
           description:
             "Delivered full-stack solutions including management systems, reservation platforms, and admin dashboards for clients.",
           tech: [
@@ -124,7 +112,7 @@ createApp({
           title: "WebInn | School Management System",
           description:
             "A Laravel-based system with face recognition attendance, QR code scanning, and grading for students, teachers, admins, and counselors. Built with TensorFlow.js and Face-api.js.",
-          url: "#",
+          url: "https://github.com/aldrin112602/WebInn",
           repository: "https://github.com/aldrin112602/WebInn",
           tags: [
             "Laravel 11",
@@ -138,7 +126,7 @@ createApp({
           title: "Tingloy Ferry Reservation System",
           description:
             "Ferry reservation platform with account creation, ticket booking, multiple payment options, group booking, automated passenger tracking, and email notifications.",
-          url: "#",
+          url: "https://github.com/aldrin112602/Tingloy-Ferry-Reservation-System",
           repository:
             "https://github.com/aldrin112602/Tingloy-Ferry-Reservation-System",
           tags: ["Laravel 12", "React", "TypeScript", "Tailwind.css"],
@@ -147,7 +135,7 @@ createApp({
           title: "Cookpal Front-end | Personal Recipe App",
           description:
             "Mobile app built with Ionic and React, powered by a Laravel API. Explore, save, and create recipes with meal planning features.",
-          url: "#",
+          url: "https://github.com/aldrin112602/CookPal",
           repository: "https://github.com/aldrin112602/CookPal",
           tags: ["Ionic", "React", "Laravel API", "TypeScript", "Tailwind.css"],
         },
@@ -155,7 +143,7 @@ createApp({
           title: "Cookpal Backend API",
           description:
             "Mobile app built with Ionic and React, powered by a Laravel API. Explore, save, and create recipes with meal planning features.",
-          url: "#",
+          url: "https://github.com/aldrin112602/CookPal-API",
           repository: "https://github.com/aldrin112602/CookPal-API",
           tags: ["Ionic", "React", "Laravel API", "TypeScript", "Tailwind.css"],
         },
@@ -163,7 +151,7 @@ createApp({
           title: "Mail API",
           description:
             "Web API for sending emails via HTTP requests with custom sender, subject, and body content. Built with Node.js and Express for contact forms and notifications.",
-          url: "#",
+          url: "https://github.com/aldrin112602/mail-api-v1",
           repository: "https://github.com/aldrin112602/mail-api-v1",
           tags: ["Node.js", "Express", "REST API", "Render"],
         },
@@ -171,7 +159,7 @@ createApp({
           title: "Swiftlink | Fiber Internet Website",
           description:
             "Fiber internet billing and subscription management system supporting multiple user roles including Admin, Lineman, and Subscribers.",
-          url: "#",
+          url: "https://github.com/aldrin112602/swiftlink-v2",
           repository: "https://github.com/aldrin112602/swiftlink-v2",
           tags: ["PHP", "Bootstrap", "jQuery", "MySQL"],
         },
@@ -179,7 +167,7 @@ createApp({
           title: "Inntayan Cabin Reservation System",
           description:
             "Cabin reservation system with a user-friendly interface for booking and managing reservations for both guests and admins.",
-          url: "#",
+          url: "https://github.com/aldrin112602/inntayan-cabin-reservation",
           repository:
             "https://github.com/aldrin112602/inntayan-cabin-reservation",
           tags: ["PHP", "Bootstrap", "jQuery", "PHP Mailer"],
@@ -188,7 +176,7 @@ createApp({
           title: "PIMS",
           description:
             "A comprehensive population information management system that enables registration of residents, automated record keeping, demographic analysis, and reporting. Built to improve efficiency, accuracy, and accessibility of population data for local governance.",
-          url: "#",
+          url: "https://github.com/aldrin112602/Population-Information-Management-System",
           repository:
             "https://github.com/aldrin112602/Population-Information-Management-System",
           tags: ["PHP", "Bootstrap", "jQuery", "PHP Mailer"],
@@ -210,6 +198,14 @@ createApp({
         document.documentElement.classList.remove("dark");
         localStorage.setItem("theme", "light");
       }
+    },
+
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen;
+    },
+
+    closeMobileMenu() {
+      this.mobileMenuOpen = false;
     },
 
     typeText() {
