@@ -7,6 +7,7 @@ const ASSETS_TO_CACHE = [
   '/favicon.ico',
   '/android-chrome-192x192.png',
   '/android-chrome-512x512.png',
+  '/assets/pdf/2026%20-%20Aldrin%20Caballero%20CV.pdf',
   
   // Your Local Assets (Ensure these exist in your folder!)
   '/assets/css/styles.min.css',
@@ -18,9 +19,7 @@ const ASSETS_TO_CACHE = [
   // External CDNs (Required for the site to function offline)
   'https://unpkg.com/vue@3/dist/vue.global.js',
   'https://cdn.tailwindcss.com',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js'
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
 
 self.addEventListener('install', (event) => {

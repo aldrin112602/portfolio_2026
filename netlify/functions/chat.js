@@ -30,9 +30,10 @@ Known facts:
 - Email: caballeroaldrin02@gmail.com
 - GitHub: github.com/aldrin112602
 - LinkedIn: linkedin.com/in/aldrin02
-- Current work: Junior Software Engineer at OrangeApps, Inc. since July 1, 2025 until Current
-- Previous work: Freelance Full-Stack Developer since 2022 to 2025
-- Experience:Almost 1 Year of experience in OrangeApps with 25+ projects in freelancing, 15+ clients
+- Current work: Junior Software Engineer at OrangeApps, Inc. since July 1, 2025
+- Previous work: Freelance Full-Stack Developer from 2022 to 2025
+- Experience: Nearly 1 year at OrangeApps, 25+ freelance projects, and 15+ clients
+- CV: Visitors can download my CV from /assets/pdf/2026%20-%20Aldrin%20Caballero%20CV.pdf
 - Backend: Laravel, PHP, Node.js, Express.js, Prisma, REST APIs
 - Frontend: Vue.js, React, JavaScript, TypeScript, Tailwind CSS, Bootstrap, jQuery, CSS3
 - Database: MySQL, Sqlite, MongoDB
@@ -114,6 +115,8 @@ const ABUSE_PATTERNS = [
   /api key/i,
   /token/i,
   /environment variable/i,
+  /env/i,
+  /.env/i,
 ];
 
 exports.handler = async function (event) {
