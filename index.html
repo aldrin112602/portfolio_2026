@@ -12,6 +12,10 @@
         content="Portfolio of Aldrin Caballero, a Full-Stack Web Developer specializing in Laravel, Vue.js, and modern web solutions.">
     <meta name="keywords" content="Aldrin Caballero, Full-Stack Developer, Laravel, Vue.js, PHP, Philippines Developer">
     <link rel="canonical" href="https://aldrin-portfolio-2026.netlify.app/">
+    <meta name="author" content="Aldrin Caballero">
+    <link rel="author" href="https://aldrin-portfolio-2026.netlify.app/">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Aldrin Caballero | Full-Stack Developer">
@@ -59,22 +63,83 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Aldrin Caballero",
-  "url": "https://aldrin-portfolio-2026.netlify.app/",
-  "jobTitle": "Full-Stack Developer",
-  "description": "Full-Stack Web Developer specializing in Laravel, Vue.js, and modern web solutions.",
-  "knowsAbout": [
-    "Laravel",
-    "Vue.js",
-    "PHP",
-    "JavaScript",
-    "REST APIs",
-    "MySQL"
-  ],
-  "sameAs": [
-    "https://github.com/aldrin112602",
-    "https://www.linkedin.com/in/aldrin02/"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://aldrin-portfolio-2026.netlify.app/#person",
+      "name": "Aldrin Caballero",
+      "url": "https://aldrin-portfolio-2026.netlify.app/",
+      "image": "https://aldrin-portfolio-2026.netlify.app/android-chrome-512x512.png",
+      "jobTitle": "Full-Stack Developer",
+      "description": "Full-Stack Web Developer specializing in Laravel, Vue.js, and modern web solutions.",
+      "nationality": "Philippines",
+      "knowsAbout": [
+        "Laravel",
+        "Vue.js",
+        "PHP",
+        "JavaScript",
+        "REST APIs",
+        "MySQL"
+      ],
+      "sameAs": [
+        "https://github.com/aldrin112602",
+        "https://www.linkedin.com/in/aldrin02/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aldrin-portfolio-2026.netlify.app/#website",
+      "url": "https://aldrin-portfolio-2026.netlify.app/",
+      "name": "Aldrin Caballero | Full-Stack Developer",
+      "description": "Portfolio of Aldrin Caballero, a Full-Stack Web Developer specializing in Laravel, Vue.js, and modern web solutions.",
+      "publisher": { "@id": "https://aldrin-portfolio-2026.netlify.app/#person" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://aldrin-portfolio-2026.netlify.app/#webpage",
+      "url": "https://aldrin-portfolio-2026.netlify.app/",
+      "name": "Aldrin Caballero | Full-Stack Developer",
+      "isPartOf": { "@id": "https://aldrin-portfolio-2026.netlify.app/#website" },
+      "about": { "@id": "https://aldrin-portfolio-2026.netlify.app/#person" },
+      "primaryImageOfPage": "https://aldrin-portfolio-2026.netlify.app/android-chrome-512x512.png"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "About",
+      "description": "Learn more about Aldrin Caballero's background and experience.",
+      "url": "https://aldrin-portfolio-2026.netlify.app/#about"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Work Experience",
+      "description": "View Aldrin Caballero's professional work history.",
+      "url": "https://aldrin-portfolio-2026.netlify.app/#experience"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Technical Skills",
+      "description": "Explore the technologies and tools Aldrin Caballero works with.",
+      "url": "https://aldrin-portfolio-2026.netlify.app/#skills"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Featured Projects",
+      "description": "Browse Aldrin Caballero's featured development projects.",
+      "url": "https://aldrin-portfolio-2026.netlify.app/#projects"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Contact",
+      "description": "Get in touch with Aldrin Caballero for freelance or full-time opportunities.",
+      "url": "https://aldrin-portfolio-2026.netlify.app/#contact"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Download CV",
+      "description": "Download Aldrin Caballero's resume / curriculum vitae as a PDF.",
+      "url": "https://aldrin-portfolio-2026.netlify.app/assets/pdf/2026%20-%20Aldrin%20Caballero%20CV.pdf"
+    }
   ]
 }
 </script>
@@ -85,22 +150,26 @@
 <body class="bg-gray-50 text-slate-800 dark:bg-dark-bg dark:text-gray-200 transition-colors duration-300 antialiased">
 
     <div id="app">
+        <a href="#main-content"
+            class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-vue focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">
+            Skip to main content
+        </a>
 
         <!-- Navigation -->
         <header
             class="fixed w-full top-0 z-50 glass-nav border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6 h-20 flex justify-between items-center">
-                <div class="text-2xl font-bold tracking-tight">
-                    Aldrin<span class="text-vue">.dev</span>
+                <div class="text-1xl font-bold tracking-tight">
+                    Aldrin<span class="text-vue"> Caballero</span>
                 </div>
 
-                <div class="hidden md:flex gap-8 font-medium">
-                    <a href="#about" class="hover:text-vue transition-colors">About</a>
-                    <a href="#experience" class="hover:text-vue transition-colors">Experience</a>
-                    <a href="#skills" class="hover:text-vue transition-colors">Skills</a>
-                    <a href="#projects" class="hover:text-vue transition-colors">Projects</a>
-                    <a href="#contact" class="hover:text-vue transition-colors">Contact</a>
-                </div>
+                <nav class="hidden md:flex gap-8 font-medium" aria-label="Main navigation">
+                    <a href="#about" class="hover:text-vue transition-colors" title="About Aldrin Caballero">About</a>
+                    <a href="#experience" class="hover:text-vue transition-colors" title="Work experience">Experience</a>
+                    <a href="#skills" class="hover:text-vue transition-colors" title="Technical skills">Skills</a>
+                    <a href="#projects" class="hover:text-vue transition-colors" title="Featured projects">Projects</a>
+                    <a href="#contact" class="hover:text-vue transition-colors" title="Contact Aldrin Caballero">Contact</a>
+                </nav>
 
                 <div class="flex items-center gap-2">
                     <button @click="toggleTheme"
@@ -131,7 +200,7 @@
                         <i class="fas fa-times text-lg text-gray-700 dark:text-gray-200"></i>
                     </button>
                 </div>
-                <nav class="flex flex-col gap-4 text-lg font-medium">
+                <nav class="flex flex-col gap-4 text-lg font-medium" aria-label="Mobile navigation">
                     <a href="#about" @click="closeMobileMenu"
                         class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
                     <a href="#experience" @click="closeMobileMenu"
@@ -151,15 +220,16 @@
         </div>
 
         <!-- Hero Section with Typing Animation -->
-        <section class="pt-40 pb-20 px-6 text-center">
+        <main id="main-content">
+        <section class="pt-40 pb-20 px-6 text-center" aria-labelledby="hero-heading">
             <div class="container mx-auto max-w-3xl">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                <h1 id="hero-heading" class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                     Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-vue to-blue-500">{{
                         profile.name }}</span>
                 </h1>
-                <h2 class="text-2xl text-vue font-medium mb-8 font-mono">
-                    {{ typedText }}<span class="typing-cursor">|</span>
-                </h2>
+                <p class="text-2xl text-vue font-medium mb-8 font-mono" role="text">
+                    {{ typedText }}<span class="typing-cursor" aria-hidden="true">|</span>
+                </p>
                 <p class="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto">
                     {{ profile.intro }}
                 </p>
@@ -181,10 +251,10 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 px-6">
+        <section id="about" class="py-20 px-6" aria-labelledby="about-heading">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-16">
-                    <h3 class="text-3xl font-bold mb-2">About Me</h3>
+                    <h2 id="about-heading" class="text-3xl font-bold mb-2">About Me</h2>
                     <div class="w-16 h-1 bg-vue mx-auto rounded"></div>
                 </div>
 
@@ -206,19 +276,19 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="py-20 px-6 bg-gray-50 dark:bg-dark-bg">
+        <section id="experience" class="py-20 px-6 bg-gray-50 dark:bg-dark-bg" aria-labelledby="experience-heading">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-16">
-                    <h3 class="text-3xl font-bold mb-2">Work Experience</h3>
+                    <h2 id="experience-heading" class="text-3xl font-bold mb-2">Work Experience</h2>
                     <div class="w-16 h-1 bg-vue mx-auto rounded"></div>
                 </div>
 
                 <div class="space-y-8">
-                    <div v-for="(exp, index) in experience" :key="index"
+                    <article v-for="(exp, index) in experience" :key="index"
                         class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
 
                         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-                            <h4 class="text-xl font-bold text-vue">{{ exp.role }}</h4>
+                            <h3 class="text-xl font-bold text-vue">{{ exp.role }}</h3>
                             <span class="text-sm text-gray-500 dark:text-gray-400">{{ exp.duration }}</span>
                         </div>
 
@@ -230,7 +300,7 @@
                         <div class="flex flex-wrap gap-4 mt-5 text-2xl">
                             <span v-for="tech in exp.tech" :key="tech.name"
                                 class="group relative cursor-pointer text-gray-500 hover:text-vue transition-colors">
-                                <i :class="tech.icon"></i>
+                                <i :class="tech.icon" :aria-label="tech.name" role="img"></i>
                                 <span class="absolute -top-9 left-1/2 -translate-x-1/2 
                                 bg-gray-800 text-white text-xs px-2 py-1 rounded 
                                 opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap">
@@ -238,16 +308,16 @@
                                 </span>
                             </span>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20 px-6 bg-vue/5 dark:bg-white/5">
+        <section id="skills" class="py-20 px-6 bg-vue/5 dark:bg-white/5" aria-labelledby="skills-heading">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-16">
-                    <h3 class="text-3xl font-bold mb-2">Technical Skills</h3>
+                    <h2 id="skills-heading" class="text-3xl font-bold mb-2">Technical Skills</h2>
                     <div class="w-16 h-1 bg-vue mx-auto rounded"></div>
                 </div>
 
@@ -256,7 +326,7 @@
                         class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group">
                         <div class="text-4xl group-hover:scale-110 transition-transform duration-300"
                             :style="{ color: skill.color }">
-                            <i :class="skill.icon"></i>
+                            <i :class="skill.icon" :aria-label="skill.name" role="img"></i>
                         </div>
                         <div class="font-semibold text-gray-700 dark:text-gray-300">{{ skill.name }}</div>
                     </div>
@@ -264,20 +334,20 @@
             </div>
         </section>
         <!-- Projects Section -->
-        <section id="projects" class="py-20 px-6 bg-gray-50 dark:bg-dark-bg">
+        <section id="projects" class="py-20 px-6 bg-gray-50 dark:bg-dark-bg" aria-labelledby="projects-heading">
             <div class="container mx-auto max-w-6xl">
                 <div class="text-center mb-16">
-                    <h3 class="text-3xl font-bold mb-2">Featured Projects</h3>
+                    <h2 id="projects-heading" class="text-3xl font-bold mb-2">Featured Projects</h2>
                     <div class="w-16 h-1 bg-vue mx-auto rounded"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                    <div v-for="(project, index) in projects" :key="index"
+                    <article v-for="(project, index) in projects" :key="index"
                         class="bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 
                         <div class="p-8 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-4">
-                                <h4 class="text-2xl font-bold">{{ project.title }}</h4>
+                                <h3 class="text-2xl font-bold">{{ project.title }}</h3>
                             </div>
                             <p class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">{{ project.description }}</p>
 
@@ -289,43 +359,48 @@
                             </div>
 
                             <a :href="project.repository" target="_blank" rel="noopener noreferrer"
+                                :title="'View source code for ' + project.title + ' on GitHub'"
                                 class="inline-flex items-center justify-center gap-2 w-full py-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-semibold"
-                                aria-label="View project source code on GitHub">
-                                <i class="fab fa-github"></i> View Source Code
+                                :aria-label="'View source code for ' + project.title + ' on GitHub'">
+                                <i class="fab fa-github" aria-hidden="true"></i> View Source Code
                             </a>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 px-6">
+        <section id="contact" class="py-20 px-6" aria-labelledby="contact-heading">
             <div class="container mx-auto max-w-3xl">
                 <div
                     class="bg-white dark:bg-dark-card rounded-3xl p-10 md:p-16 text-center shadow-xl border border-gray-100 dark:border-gray-800">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's build something together</h2>
+                    <h2 id="contact-heading" class="text-3xl md:text-4xl font-bold mb-6">Let's build something together</h2>
                     <p class="text-gray-600 dark:text-gray-400 text-lg mb-10 max-w-xl mx-auto">
                         I am currently available for freelance work or full-time opportunities. If you have a project
                         that needs a robust full-stack solution, send me an email.
                     </p>
+                    <address class="not-italic">
                     <div class="flex flex-wrap justify-center gap-4">
-                        <a :href="'mailto:' + contact.email"
+                        <a :href="'mailto:' + contact.email" :title="'Email ' + profile.name"
                             class="inline-block px-10 py-4 bg-vue text-white rounded-full font-bold text-lg shadow-lg hover:shadow-vue/50 hover:-translate-y-1 transition-all duration-300">
-                            <i class="fas fa-paper-plane mr-2"></i> Say Hello
+                            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i> Say Hello
                         </a>
                         <a href="./assets/pdf/2026%20-%20Aldrin%20Caballero%20CV.pdf" download
+                            title="Download Aldrin Caballero's CV / resume as PDF"
                             class="inline-block px-10 py-4 border-2 border-vue text-vue rounded-full font-bold text-lg hover:bg-vue hover:text-white transition-all duration-300">
-                            <i class="fas fa-download mr-2"></i> Download CV
+                            <i class="fas fa-download mr-2" aria-hidden="true"></i> Download CV
                         </a>
                     </div>
+                    </address>
                 </div>
             </div>
         </section>
+        </main>
 
         <!-- Footer -->
         <footer class="py-10 text-center border-t border-gray-200 dark:border-gray-800 text-gray-500">
-            <p>&copy; {{ new Date().getFullYear() }} {{ profile.name }}. <br /> Built with VueJS & Tailwind CSS.</p>
+            <p>&copy; {{ new Date().getFullYear() }} {{ profile.name }}. <br /> Built with VueJS &amp; Tailwind CSS.</p>
         </footer>
 
     </div>
