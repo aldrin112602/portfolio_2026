@@ -125,19 +125,25 @@
 
         <div v-if="mobileMenuOpen">
             <div class="fixed inset-0 z-40 bg-black/40" @click="closeMobileMenu"></div>
-            <div class="fixed top-0 right-0 z-50 h-full w-72 max-w-full bg-white dark:bg-dark-card shadow-2xl p-8 overflow-y-auto">
+            <div
+                class="fixed top-0 right-0 z-50 h-full w-72 max-w-full bg-white dark:bg-dark-card shadow-2xl p-8 overflow-y-auto">
                 <div class="flex items-center justify-between mb-8">
                     <div class="text-xl font-bold">Menu</div>
-                    <button @click="closeMobileMenu" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    <button @click="closeMobileMenu"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                         title="Close Menu" aria-label="Close mobile navigation menu">
                         <i class="fas fa-times text-lg text-gray-700 dark:text-gray-200"></i>
                     </button>
                 </div>
                 <nav class="flex flex-col gap-4 text-lg font-medium">
-                    <a href="#about" @click="closeMobileMenu" class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
-                    <a href="#skills" @click="closeMobileMenu" class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Skills</a>
-                    <a href="#projects" @click="closeMobileMenu" class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
-                    <a href="#contact" @click="closeMobileMenu" class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+                    <a href="#about" @click="closeMobileMenu"
+                        class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+                    <a href="#skills" @click="closeMobileMenu"
+                        class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Skills</a>
+                    <a href="#projects" @click="closeMobileMenu"
+                        class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+                    <a href="#contact" @click="closeMobileMenu"
+                        class="block py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
                 </nav>
             </div>
         </div>
@@ -266,7 +272,9 @@
                         <div class="p-8 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-4">
                                 <h4 class="text-2xl font-bold">{{ project.title }}</h4>
-                                <a :href="project.url" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-vue transition-colors" aria-label="Open live project demo">
+                                <a :href="project.url" target="_blank" rel="noopener noreferrer"
+                                    class="text-gray-400 hover:text-vue transition-colors"
+                                    aria-label="Open live project demo">
                                     <i class="fas fa-external-link-alt text-xl"></i>
                                 </a>
                             </div>
@@ -280,7 +288,8 @@
                             </div>
 
                             <a :href="project.repository" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center justify-center gap-2 w-full py-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-semibold" aria-label="View project source code on GitHub">
+                                class="inline-flex items-center justify-center gap-2 w-full py-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-semibold"
+                                aria-label="View project source code on GitHub">
                                 <i class="fab fa-github"></i> View Source Code
                             </a>
                         </div>
