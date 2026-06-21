@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aldrin-portfolio-v2';
+const CACHE_NAME = 'aldrin-portfolio-v3';
 
 const ASSETS_TO_CACHE = [
   '/',
@@ -9,10 +9,10 @@ const ASSETS_TO_CACHE = [
   '/android-chrome-512x512.png',
   
   // Your Local Assets (Ensure these exist in your folder!)
-  '/assets/css/tailwind-config.min.css',
   '/assets/css/styles.min.css',
-  '/assets/js/vue.app.min.js',
-  '/assets/js/aldrin-chatbot.min.js',
+  '/assets/js/tailwind-config.min.js',
+  '/assets/js/vue-app.js',
+  '/assets/js/aldrin-chatbot.js',
 
 
   // External CDNs (Required for the site to function offline)

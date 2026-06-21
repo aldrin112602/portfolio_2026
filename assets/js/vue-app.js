@@ -119,42 +119,6 @@ createApp({
         { name: "REST API", icon: "fas fa-plug", color: "#4A90E2" },
       ],
 
-      codeSnippets: [
-        {
-          name: "Laravel",
-          file: "UserController.php",
-          language: "php",
-          code: "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\User;\nuse Illuminate\\Http\\Request;\n\nclass UserController extends Controller\n{\n    public function index()\n    {\n        $users = User::with('roles')\n            ->latest()\n            ->paginate(10);\n            \n        return view('users.index', compact('users'));\n    }\n    \n    public function store(Request $request)\n    {\n        $validated = $request->validate([\n            'name' => 'required|max:255',\n            'email' => 'required|email|unique:users',\n            'password' => 'required|min:8|confirmed',\n        ]);\n        \n        $user = User::create([\n            'name' => $validated['name'],\n            'email' => $validated['email'],\n            'password' => bcrypt($validated['password']),\n        ]);\n        \n        return redirect()->route('users.index')\n            ->with('success', 'User created successfully!');\n    }\n}",
-        },
-        {
-          name: "Vue.js",
-          file: "TodoList.vue",
-          language: "javascript",
-          code: '<template>\n  <div class="todo-app">\n    <input \n      v-model="newTodo" \n      @keyup.enter="addTodo"\n      placeholder="Add new task..."\n      class="input"\n    />\n    \n    <ul class="todo-list">\n      <li \n        v-for="todo in todos" \n        :key="todo.id"\n        :class="{ completed: todo.done }"\n      >\n        <input \n          type="checkbox" \n          v-model="todo.done"\n        />\n        <span>{{ todo.text }}</span>\n        <button @click="removeTodo(todo.id)">×</button>\n      </li>\n    </ul>\n  </div>\n</template>\n\n<script setup>\nimport { ref } from \'vue\';\n\nconst todos = ref([]);\nconst newTodo = ref(\'\');\n\nconst addTodo = () => {\n  if (newTodo.value.trim()) {\n    todos.value.push({\n      id: Date.now(),\n      text: newTodo.value,\n      done: false\n    });\n    newTodo.value = \'\';\n  }\n};\n\nconst removeTodo = (id) => {\n  todos.value = todos.value.filter(t => t.id !== id);\n};\n<\/script>',
-        },
-        {
-          name: "React",
-          file: "Dashboard.jsx",
-          language: "javascript",
-          code: "import React, { useState, useEffect } from 'react';\nimport axios from 'axios';\n\nconst Dashboard = () => {\n  const [stats, setStats] = useState({\n    users: 0,\n    revenue: 0,\n    orders: 0\n  });\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    fetchDashboardStats();\n  }, []);\n\n  const fetchDashboardStats = async () => {\n    try {\n      const { data } = await axios.get('/api/dashboard/stats');\n      setStats(data);\n    } catch (error) {\n      console.error('Error fetching stats:', error);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  if (loading) return <div>Loading...</div>;\n\n  return (\n    <div className=\"dashboard\">\n      <h1>Analytics Dashboard</h1>\n      <div className=\"stats-grid\">\n        <StatCard title=\"Users\" value={stats.users} />\n        <StatCard title=\"Revenue\" value={'$' + stats.revenue} />\n        <StatCard title=\"Orders\" value={stats.orders} />\n      </div>\n    </div>\n  );\n};\n\nexport default Dashboard;",
-        },
-        {
-          name: "API",
-          file: "api.js",
-          language: "javascript",
-          code: "const express = require('express');\nconst router = express.Router();\nconst jwt = require('jsonwebtoken');\nconst bcrypt = require('bcrypt');\n\n// User authentication\nrouter.post('/auth/login', async (req, res) => {\n  try {\n    const { email, password } = req.body;\n    \n    const user = await User.findOne({ email });\n    if (!user) {\n      return res.status(401).json({ \n        error: 'Invalid credentials' \n      });\n    }\n    \n    const validPassword = await bcrypt.compare(\n      password, \n      user.password\n    );\n    \n    if (!validPassword) {\n      return res.status(401).json({ \n        error: 'Invalid credentials' \n      });\n    }\n    \n    const token = jwt.sign(\n      { id: user._id, email: user.email },\n      process.env.JWT_SECRET,\n      { expiresIn: '24h' }\n    );\n    \n    res.json({ \n      token, \n      user: {\n        id: user._id,\n        name: user.name,\n        email: user.email\n      }\n    });\n  } catch (error) {\n    res.status(500).json({ error: error.message });\n  }\n});\n\nmodule.exports = router;",
-        },
-      ],
-      currentCodeFile: "UserController.php",
-      currentCodeLanguage: "php",
-      currentCode: "",
-
-      apiDemo: {
-        quote: "",
-        author: "",
-        loading: false,
-      },
-
       projects: [
         {
           title: "WebInn | School Management System",
@@ -234,70 +198,9 @@ createApp({
       contact: {
         email: "caballeroaldrin02@gmail.com",
       },
-
-      quiz: {
-        current: 0,
-        score: 0,
-        answered: false,
-        selectedOption: null,
-        done: false,
-        questions: [
-          { q: "What is Aldrin's primary job title?", options: ["Front-End Developer", "Full-Stack Web Developer", "Mobile App Designer", "DevOps Engineer"], answer: 1, fact: "Aldrin specializes in both back-end architecture and front-end interactivity." },
-          { q: "Which PHP framework is Aldrin's main back-end specialty?", options: ["Symfony", "CodeIgniter", "Laravel", "Django"], answer: 2, fact: "Laravel is at the core of most of Aldrin's production projects." },
-          { q: "Which company is Aldrin currently employed at?", options: ["SupSoft Tech", "OrangeApps, Inc.", "Accenture", "Self-Employed only"], answer: 1, fact: "Aldrin joined OrangeApps, Inc. as a Junior Software Engineer in July 2025." },
-          { q: "What technology powers face recognition in WebInn?", options: ["OpenCV", "Face-api.js", "AWS Rekognition", "Azure Face"], answer: 1, fact: "WebInn uses Face-api.js backed by TensorFlow.js for attendance." },
-          { q: "What did Aldrin build for Tingloy?", options: ["GPS tracker", "Ferry reservation platform", "Chat app", "Billing dashboard"], answer: 1, fact: "Handles ticket booking, group reservations, and passenger tracking." },
-          { q: "How many years of experience does Aldrin have?", options: ["1+", "2+", "4+", "10+"], answer: 2, fact: "Aldrin has 4+ years across freelance and professional roles." },
-          { q: "What was Aldrin's first internship role?", options: ["Laravel Dev", "React Dev", "Flutter Developer", "PHP Dev"], answer: 2, fact: "Aldrin interned as a Flutter Developer at SupSoft Tech." },
-          { q: "Which project is a personal recipe mobile app?", options: ["WebInn", "PIMS", "CookPal", "Swiftlink"], answer: 2, fact: "CookPal is built with Ionic + React, powered by a Laravel API." },
-          { q: "What stack powers the Mail API?", options: ["Laravel + MySQL", "Node.js + Express", "Django + Redis", "PHP + Apache"], answer: 1, fact: "The Mail API is a lightweight Node.js/Express REST API on Render." },
-          { q: "Which CSS framework does Aldrin frequently use?", options: ["Bulma", "Foundation", "Tailwind CSS", "Material UI"], answer: 2, fact: "Tailwind CSS appears across most of Aldrin's recent projects." },
-        ].sort(() => Math.random() - 0.5),
-      },
     };
   },
-  computed: {
-    highlightedCode() {
-      return hljs.highlight(this.currentCode, {
-        language: this.currentCodeLanguage,
-      }).value;
-    },
-  },
   methods: {
-    answerQuiz(index) {
-      if (this.quiz.answered) return;
-      this.quiz.answered = true;
-      this.quiz.selectedOption = index;
-      if (index === this.quiz.questions[this.quiz.current].answer) {
-        this.quiz.score++;
-      }
-    },
-    nextQuizQuestion() {
-      if (this.quiz.current + 1 >= this.quiz.questions.length) {
-        this.quiz.done = true;
-      } else {
-        this.quiz.current++;
-        this.quiz.answered = false;
-        this.quiz.selectedOption = null;
-      }
-    },
-    resetQuiz() {
-      this.quiz.current = 0;
-      this.quiz.score = 0;
-      this.quiz.answered = false;
-      this.quiz.selectedOption = null;
-      this.quiz.done = false;
-      this.quiz.questions.sort(() => Math.random() - 0.5);
-    },
-    copyCode() {
-      navigator.clipboard.writeText(this.currentCode).then(() => {
-        const originalFile = this.currentCodeFile;
-        this.currentCodeFile = "✅ Copied to Clipboard!";
-        setTimeout(() => {
-          this.currentCodeFile = originalFile;
-        }, 2000);
-      });
-    },
     toggleTheme() {
       this.darkMode = !this.darkMode;
       if (this.darkMode) {
@@ -342,63 +245,6 @@ createApp({
         }
       }
     },
-
-    changeCode(snippet) {
-      this.currentCodeFile = snippet.file;
-      this.currentCodeLanguage = snippet.language;
-      this.currentCode = snippet.code;
-    },
-
-    async fetchQuote() {
-      this.apiDemo.loading = true;
-
-      const quotes = [
-        {
-          text: "Code is like humor. When you have to explain it, it's bad.",
-          author: "Cory House",
-        },
-        {
-          text: "First, solve the problem. Then, write the code.",
-          author: "John Johnson",
-        },
-        {
-          text: "Experience is the name everyone gives to their mistakes.",
-          author: "Oscar Wilde",
-        },
-        {
-          text: "In order to be irreplaceable, one must always be different.",
-          author: "Coco Chanel",
-        },
-        {
-          text: "Java is to JavaScript what car is to Carpet.",
-          author: "Chris Heilmann",
-        },
-        { text: "Knowledge is power.", author: "Francis Bacon" },
-        {
-          text: "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday's code.",
-          author: "Dan Salomon",
-        },
-        {
-          text: "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.",
-          author: "Antoine de Saint-Exupery",
-        },
-        {
-          text: "Code never lies, comments sometimes do.",
-          author: "Ron Jeffries",
-        },
-        {
-          text: "Simplicity is the soul of efficiency.",
-          author: "Austin Freeman",
-        },
-      ];
-
-      setTimeout(() => {
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        this.apiDemo.quote = randomQuote.text;
-        this.apiDemo.author = randomQuote.author;
-        this.apiDemo.loading = false;
-      }, 1000);
-    },
   },
   mounted() {
     if (
@@ -414,7 +260,5 @@ createApp({
     }
 
     this.typeText();
-    this.currentCode = this.codeSnippets[0].code;
-    this.fetchQuote();
   },
 }).mount("#app");
